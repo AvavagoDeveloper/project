@@ -21,8 +21,18 @@ int main() {
     cout << "                          ========================================" << endl;
     cout << "                               1 - Footwear | 2 - Accessories" << endl << endl;
 
-    cout << "How many items would you like to order? ";
-    cin >> numOrders;
+    while (true) {
+        cout << "How many items would you like to order? ";
+        cin >> numOrders;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Invalid Amount!" << endl;
+        }
+        else {
+            break;
+        }
+    }
 
     for (int i = 1; i <= numOrders; i++) {
 
