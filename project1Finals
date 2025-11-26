@@ -350,7 +350,7 @@ int main() {
         cout << "           " << socksCount << "                   Socks              PHP 199.99             PHP " << socksCount * 199.99 << endl;
 
     if (insolesCount > 0)
-        cout << "           " << insolesCount << "                  Insoles             PHP 250.00            PHP " << insolesCount * 250.00 << endl;
+        cout << "           " << insolesCount << "                  Insoles             PHP 250.00             PHP " << insolesCount * 250.00 << endl;
 
     if (cleanerCount > 0)
         cout << "           " << cleanerCount << "                Shoe Cleaner          PHP 230.00             PHP " << cleanerCount * 230.00 << endl;
