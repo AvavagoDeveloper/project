@@ -292,8 +292,8 @@ int main() {
             break;
         }
     }
-        cout << endl
-            << "------------------------------------------------------------------------------------------" << endl;
+    cout << endl
+        << "------------------------------------------------------------------------------------------" << endl;
     if (cashAmount >= total) {
         change = cashAmount - total;
     }
@@ -350,25 +350,25 @@ int main() {
         cout << "           " << socksCount << "                   Socks              PHP 199.99             PHP " << socksCount * 199.99 << endl;
 
     if (insolesCount > 0)
-        cout << "           " << insolesCount << "                  Insoles             PHP 250.00              PHP " << insolesCount * 250.00 << endl;
+        cout << "           " << insolesCount << "                  Insoles             PHP 250.00            PHP " << insolesCount * 250.00 << endl;
 
     if (cleanerCount > 0)
-        cout << "           " << cleanerCount << "                Shoe Cleaner          PHP 230.00               PHP " << cleanerCount * 230.00 << endl;
+        cout << "           " << cleanerCount << "                Shoe Cleaner          PHP 230.00             PHP " << cleanerCount * 230.00 << endl;
 
     if (polishCount > 0)
         cout << "           " << polishCount << "                 Shoe Polish          PHP 140.00             PHP " << polishCount * 140.00 << endl;
 
     if (shoelacesCount > 0)
-        cout << "           " << shoelacesCount << "                 Shoelaces            PHP 100.00               PHP " << shoelacesCount * 100.00 << endl;
+        cout << "           " << shoelacesCount << "                 Shoelaces            PHP 100.00             PHP " << shoelacesCount * 100.00 << endl;
 
     if (brushCount > 0)
-        cout << "           " << brushCount << "                 Shoe Brush            PHP 140.00              PHP " << brushCount * 140.00 << endl;
+        cout << "           " << brushCount << "                 Shoe Brush            PHP 140.00            PHP " << brushCount * 140.00 << endl;
 
     if (padsCount > 0)
-        cout << "           " << padsCount << "                 Shoe Pads            PHP  90.00               PHP " << padsCount * 90.00 << endl;
+        cout << "           " << padsCount << "                 Shoe Pads            PHP  90.00             PHP " << padsCount * 90.00 << endl;
 
     if (hornCount > 0) {
-        cout << "           " << hornCount << "                 Shoe Horn                PHP 70.00            PHP " << hornCount * 70.00 << endl;
+        cout << "           " << hornCount << "                 Shoe Horn                PHP 70.00          PHP " << hornCount * 70.00 << endl;
     }
 
     cout << "------------------------------------------------------------------------------------------" << endl;
