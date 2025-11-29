@@ -5,8 +5,8 @@ using namespace std;
 int main() {
 
     int choice1, choice2, choice3, quanti = 0, numOrders, casualSneakersCount = 0, runningShoesCount = 0, loafersCount = 0, dressShoesCount = 0;
-    float sandalsCount = 0, leatherBootsCount = 0, ruggedBootsCount = 0, waterproofBootsCount = 0, slipOnsCount = 0, platformsCount = 0, heelsCount = 0, balletFlatsCount = 0;
-    float socksCount = 0, insolesCount = 0, cleanerCount = 0, polishCount = 0, shoelacesCount = 0, brushCount = 0, padsCount = 0, hornCount = 0;
+    int sandalsCount = 0, leatherBootsCount = 0, ruggedBootsCount = 0, waterproofBootsCount = 0, slipOnsCount = 0, platformsCount = 0, heelsCount = 0, balletFlatsCount = 0; //For the receipt to count the order quantity
+    int socksCount = 0, insolesCount = 0, cleanerCount = 0, polishCount = 0, shoelacesCount = 0, brushCount = 0, padsCount = 0, hornCount = 0;
     float order = 0, totalBefore = 0, total = 0, vatTotal = 0, seniorTotal = 0, cashAmount, change = 0, totalWithVat = 0;
     const float vat = 0.12, discount = 0.20;
     char senior, pwd;
@@ -21,30 +21,33 @@ int main() {
     cout << "                          ========================================" << endl;
     cout << "                               1 - Footwear | 2 - Accessories" << endl << endl;
 
-    while (true) {
+    //if the input is invalid, it repeats the question
+    while (true) {      
         cout << "How many items would you like to order? ";
         cin >> numOrders;
-        if (cin.fail()) {
+        if (cin.fail()) {      //counts alphabet as invalid input
             cin.clear();
             cin.ignore(1000, '\n');
             cout << "Invalid Amount!" << endl;
         }
         else {
-            break;
+            break;     //breaks the loop if the input is valid
         }
     }
 
-    for (int i = 1; i <= numOrders; i++) {
+    //Loops depending on the user's order amount
+    for (int i = 1; i <= numOrders; i++) {     
 
         cout << endl << "                 ---- ORDER #" << i << " ----" << endl;
 
         // reset order price for each item
         order = 0;
 
-        while (true) {
+        //if the input is invalid, it repeats the question
+        while (true) {     
             cout << "Enter option number (1 - Footwear, 2 - Accessories): ";
             cin >> choice1;
-            if (cin.fail()) {
+            if (cin.fail()) {     //counts alphabet as invalid input
                 cin.clear();
                 cin.ignore(1000, '\n');
                 cout << "Invalid option!" << endl;
@@ -66,14 +69,15 @@ int main() {
                 cout << "Enter option number: ";
                 cin >> choice2;
 
-                if (cin.fail()) {
+                if (cin.fail()) {      //counts alphabet as invalid input
                     cin.clear();
                     cin.ignore(1000, '\n');
                     cout << "Invalid option!" << endl;
                     continue;
                 }
 
-                if (choice2 == 1) {
+                //adds the price with the corresponding order no. in the shoes category and invalid if the input is not in the options
+                if (choice2 == 1) {     
                     order = 1499.99;
                 }
                 else if (choice2 == 2) {
@@ -125,14 +129,15 @@ int main() {
             while (true) {
                 cout << "Enter option number: ";
                 cin >> choice3;
-                if (cin.fail()) {
+                if (cin.fail()) {      //counts alphabet as invalid input
                     cin.clear();
                     cin.ignore(1000, '\n');
                     cout << "Invalid option!" << endl;
                     continue;
                 }
 
-                if (choice3 == 1) {
+                //adds the price with the corresponding order no. in the accessories category and invalid if the input is not in the options
+                if (choice3 == 1) {      
                     order = 199.99;
                 }
                 else if (choice3 == 2) {
@@ -165,14 +170,14 @@ int main() {
         }
         else {
             cout << "Invalid category! Try again." << endl;
-            i--;
+            i--;     //decrements i so that the loop would not proceed to the next if the input is invalid
             continue;
         }
 
         while (true) {
             cout << "Enter purchase quantity: ";
             cin >> quanti;
-            if (cin.fail()) {
+            if (cin.fail()) {      //counts alphabet as invalid input
                 cin.clear();
                 cin.ignore(1000, '\n');
                 cout << "Invalid Input!" << endl;
@@ -185,7 +190,7 @@ int main() {
         totalBefore += order * quanti;
         if (choice1 == 1) { // Footwear
             if (choice2 == 1) {
-                casualSneakersCount = quanti;
+                casualSneakersCount = quanti;     //equating the count of the order (for the receipt) to the user's chosen quantity (shoes category)
             }
             else if (choice2 == 2) {
                 runningShoesCount = quanti;
@@ -223,7 +228,7 @@ int main() {
         }
         else if (choice1 == 2) { // Accessories
             if (choice3 == 1) {
-                socksCount = quanti;
+                socksCount = quanti;     //equating the count of the order (for the receipt) to the user's chosen quantity (accessories category)
             }
             else if (choice3 == 2) {
                 insolesCount = quanti;
@@ -249,8 +254,9 @@ int main() {
         }
     }
 
-    while (true) {
-        cout << "Are you a senior citizen? (Y / N) : ";
+    //asks the user whether they are a senior citizen or a pwd, and resets the question if the input is invalid
+    cout << "Are you a senior citizen? (Y / N) : ";
+    while (true) {     
         cin >> senior;
 
         cout << "Are you a person with disability (PWD)? (Y / N) : ";
@@ -283,10 +289,10 @@ int main() {
 
         cout << "Enter cash amount: PHP ";
         cin >> cashAmount;
-        if (cin.fail()) {
+        if (cin.fail()) {      //counts alphabet as invalid input
             cin.clear();
             cin.ignore(1000, '\n');
-            cout << "Please input a numerica value!" << endl;
+            cout << "Please input a numerical value!" << endl;
         }
         else {
             break;
@@ -301,6 +307,7 @@ int main() {
         cout << "Not enough cash!" << endl << endl;
         return 0;
     }
+    //The construction of receipt
     cout << "                                    SHOEMAR FOOTWEAR CO. " << endl;
     cout << "                               Cabambangan, Bacolor, Pampanga" << endl;
     cout << "                                     (+63) 919-855-1814" << endl;
@@ -309,6 +316,7 @@ int main() {
     cout << "------------------------------------------------------------------------------------------" << endl;
     cout << "|       Quantity       |        Item        |        Price        |        Amount        |" << endl
         << "------------------------------------------------------------------------------------------" << endl;
+
     if (casualSneakersCount > 0)
         cout << "           " << casualSneakersCount << "               Casual Sneakers        PHP 1499.99            PHP " << casualSneakersCount * 1499.99 << endl;
 
