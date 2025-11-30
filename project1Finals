@@ -34,7 +34,7 @@ int main() {
             cout << "Invalid Amount!" << endl;
         }
         else {
-            break;     //breaks the loop if the user input is valid
+            break;     //breaks the loop if the input is valid
         }
     }
 
@@ -130,20 +130,22 @@ int main() {
             while (true) {
                 cin >> sizeType;
 
-                if (sizeType == '1' || sizeType == '2') break;
+                if (sizeType == '1' || sizeType == '2') {
+                    break;
+                }
 
                 cout << "Invalid option! Enter 1 for UK or 2 for US: ";
             }
 
             // Display size brackets
             if (sizeType == '1') {
-                cout << "Available UK Sizes: [39 40 41 42 43 44 45 46 47 48]\n";
+                cout << "Available UK Sizes: [39 40 41 42 43 44 45 46 47 48]" << endl;
             }
             else {
-                cout << "Available US Sizes: [6 7 8 9 10 11 12 13]\n";
+                cout << "Available US Sizes: [6 7 8 9 10 11 12 13]" << endl;
             }
 
-            // Input actual shoe size
+            // Input actual shoe sizes
             while (true) {
                 cout << "Enter shoe size: ";
                 cin >> shoeSize;
@@ -151,14 +153,14 @@ int main() {
                 if (cin.fail()) {
                     cin.clear();
                     cin.ignore(1000, '\n');
-                    cout << "Invalid size! Enter a number.\n";
+                    cout << "Invalid size! Enter a number." << endl;
                     continue;
                 }
 
                 if (sizeType == '1' && (shoeSize >= 39 && shoeSize <= 48)) break;
                 if (sizeType == '2' && (shoeSize >= 6 && shoeSize <= 13)) break;
 
-                cout << "Size not in bracket! Try again.\n";
+                cout << "Size not in bracket! Try again." << endl;
             }
         }
         else if (choice1 == 2) {
