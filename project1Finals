@@ -34,7 +34,7 @@ int main() {
             cout << "Invalid Amount!" << endl;
         }
         else {
-            break;     //breaks the loop if the input is valid
+            break;     //breaks the loop if the user input is valid
         }
     }
 
