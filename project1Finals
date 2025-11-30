@@ -4,12 +4,15 @@ using namespace std;
 
 int main() {
 
-    int choice1, choice2, choice3, quanti = 0, numOrders, casualSneakersCount = 0, runningShoesCount = 0, loafersCount = 0, dressShoesCount = 0;
-    int sandalsCount = 0, leatherBootsCount = 0, ruggedBootsCount = 0, waterproofBootsCount = 0, slipOnsCount = 0, platformsCount = 0, heelsCount = 0, balletFlatsCount = 0; //For the receipt to count the order quantity
+    int choice1, choice2, choice3, quanti = 0, numOrders, casualSneakersCount = 0, runningShoesCount = 0, loafersCount = 0, dressShoesCount = 0, shoeSize = 0;
+    int sandalsCount = 0, leatherBootsCount = 0, ruggedBootsCount = 0, waterproofBootsCount = 0, slipOnsCount = 0, platformsCount = 0, heelsCount = 0, balletFlatsCount = 0;     //For the receipt to count the order quantity
+    int casualSneakersSize = 0, runningShoesSize = 0, loafersSize = 0, dressShoesSize = 0;             //For the receipt to count the size
+    int sandalsSize = 0, leatherBootsSize = 0, ruggedBootsSize = 0, waterproofBootsSize = 0;
+    int slipOnsSize = 0, platformsSize = 0, heelsSize = 0, balletFlatsSize = 0;
     int socksCount = 0, insolesCount = 0, cleanerCount = 0, polishCount = 0, shoelacesCount = 0, brushCount = 0, padsCount = 0, hornCount = 0;
     float order = 0, totalBefore = 0, total = 0, vatTotal = 0, seniorTotal = 0, cashAmount, change = 0, totalWithVat = 0;
     const float vat = 0.12, discount = 0.20;
-    char senior, pwd;
+    char senior, pwd, sizeType;
 
     cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl
         << "|||||||||||||||||||||||||||||||||||SHOEMAR FOOTWEAR CO.||||||||||||||||||||||||||||||||||" << endl
@@ -22,7 +25,7 @@ int main() {
     cout << "                               1 - Footwear | 2 - Accessories" << endl << endl;
 
     //if the input is invalid, it repeats the question
-    while (true) {      
+    while (true) {
         cout << "How many items would you like to order? ";
         cin >> numOrders;
         if (cin.fail()) {      //counts alphabet as invalid input
@@ -36,7 +39,7 @@ int main() {
     }
 
     //Loops depending on the user's order amount
-    for (int i = 1; i <= numOrders; i++) {     
+    for (int i = 1; i <= numOrders; i++) {
 
         cout << endl << "                 ---- ORDER #" << i << " ----" << endl;
 
@@ -44,7 +47,7 @@ int main() {
         order = 0;
 
         //if the input is invalid, it repeats the question
-        while (true) {     
+        while (true) {
             cout << "Enter option number (1 - Footwear, 2 - Accessories): ";
             cin >> choice1;
             if (cin.fail()) {     //counts alphabet as invalid input
@@ -77,7 +80,7 @@ int main() {
                 }
 
                 //adds the price with the corresponding order no. in the shoes category and invalid if the input is not in the options
-                if (choice2 == 1) {     
+                if (choice2 == 1) {
                     order = 1499.99;
                 }
                 else if (choice2 == 2) {
@@ -119,6 +122,44 @@ int main() {
                 }
                 break;
             }
+            cout << endl << "Select size type:\n";
+            cout << "1 - UK Sizes (39-48)" << endl;
+            cout << "2 - US Sizes (6-13)" << endl;
+            cout << "Enter option: ";
+
+            while (true) {
+                cin >> sizeType;
+
+                if (sizeType == '1' || sizeType == '2') break;
+
+                cout << "Invalid option! Enter 1 for UK or 2 for US: ";
+            }
+
+            // Display size brackets
+            if (sizeType == '1') {
+                cout << "Available UK Sizes: [39 40 41 42 43 44 45 46 47 48]\n";
+            }
+            else {
+                cout << "Available US Sizes: [6 7 8 9 10 11 12 13]\n";
+            }
+
+            // Input actual shoe size
+            while (true) {
+                cout << "Enter shoe size: ";
+                cin >> shoeSize;
+
+                if (cin.fail()) {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    cout << "Invalid size! Enter a number.\n";
+                    continue;
+                }
+
+                if (sizeType == '1' && (shoeSize >= 39 && shoeSize <= 48)) break;
+                if (sizeType == '2' && (shoeSize >= 6 && shoeSize <= 13)) break;
+
+                cout << "Size not in bracket! Try again.\n";
+            }
         }
         else if (choice1 == 2) {
             cout << " 1 - Socks-------------------PHP 199.99 |  2 - Insoles------------PHP 250.00" << endl;
@@ -137,7 +178,7 @@ int main() {
                 }
 
                 //adds the price with the corresponding order no. in the accessories category and invalid if the input is not in the options
-                if (choice3 == 1) {      
+                if (choice3 == 1) {
                     order = 199.99;
                 }
                 else if (choice3 == 2) {
@@ -190,40 +231,52 @@ int main() {
         totalBefore += order * quanti;
         if (choice1 == 1) { // Footwear
             if (choice2 == 1) {
-                casualSneakersCount = quanti;     //equating the count of the order (for the receipt) to the user's chosen quantity (shoes category)
+                casualSneakersCount = quanti;     //equating the count of the order (for the receipt) to the user's chosen quantity. Also counts the size for the receipt
+                casualSneakersSize = shoeSize;
             }
             else if (choice2 == 2) {
                 runningShoesCount = quanti;
+                runningShoesSize = shoeSize;
             }
             else if (choice2 == 3) {
                 loafersCount = quanti;
+                loafersSize = shoeSize;
             }
             else if (choice2 == 4) {
                 dressShoesCount = quanti;
+                dressShoesSize = shoeSize;
             }
             else if (choice2 == 5) {
                 sandalsCount = quanti;
+                sandalsSize = shoeSize;
             }
             else if (choice2 == 6) {
                 leatherBootsCount = quanti;
+                leatherBootsSize = shoeSize;
             }
             else if (choice2 == 7) {
                 ruggedBootsCount = quanti;
+                ruggedBootsSize = shoeSize;
             }
             else if (choice2 == 8) {
                 waterproofBootsCount = quanti;
+                waterproofBootsSize = shoeSize;
             }
             else if (choice2 == 9) {
                 slipOnsCount = quanti;
+                slipOnsSize = shoeSize;
             }
             else if (choice2 == 10) {
                 platformsCount = quanti;
+                platformsSize = shoeSize;
             }
             else if (choice2 == 11) {
                 heelsCount = quanti;
+                heelsSize = shoeSize;
             }
             else if (choice2 == 12) {
                 balletFlatsCount = quanti;
+                balletFlatsSize = shoeSize;
             }
         }
         else if (choice1 == 2) { // Accessories
@@ -256,7 +309,7 @@ int main() {
 
     //asks the user whether they are a senior citizen or a pwd, and resets the question if the input is invalid
     cout << "Are you a senior citizen? (Y / N) : ";
-    while (true) {     
+    while (true) {
         cin >> senior;
 
         cout << "Are you a person with disability (PWD)? (Y / N) : ";
@@ -273,10 +326,8 @@ int main() {
 
         // Calculate discount or VAT
         if (senior == 'Y' || senior == 'y' || pwd == 'Y' || pwd == 'y') {
-            vatTotal = totalBefore * vat;
-            totalWithVat = totalBefore + vatTotal;
-            seniorTotal = totalWithVat * discount;
-            total = totalWithVat - seniorTotal;
+            seniorTotal = totalBefore * discount;
+            total = totalBefore - seniorTotal;
         }
         else {
             vatTotal = totalBefore * vat;
@@ -314,86 +365,128 @@ int main() {
     cout << "------------------------------------------------------------------------------------------" << endl;
     cout << "Cashier: Jane D.                                                            #0067" << endl;
     cout << "------------------------------------------------------------------------------------------" << endl;
-    cout << "|       Quantity       |        Item        |        Price        |        Amount        |" << endl
+    cout << "|     Quantity   |       Size      |      Item      |      Price      |      Amount      |" << endl
         << "------------------------------------------------------------------------------------------" << endl;
 
     if (casualSneakersCount > 0)
-        cout << "           " << casualSneakersCount << "               Casual Sneakers        PHP 1499.99            PHP " << casualSneakersCount * 1499.99 << endl;
+        cout << "         " << casualSneakersCount << "                "
+        << casualSneakersSize << "          Casual Sneakers     PHP 1499.99      PHP "
+        << casualSneakersCount * 1499.99 << endl;
 
     if (runningShoesCount > 0)
-        cout << "           " << runningShoesCount << "                Running Shoes         PHP 2799.99            PHP " << runningShoesCount * 2799.99 << endl;
+        cout << "         " << runningShoesCount << "                "
+        << runningShoesSize << "          Running Shoes      PHP 2799.99      PHP "
+        << runningShoesCount * 2799.99 << endl;
 
     if (loafersCount > 0)
-        cout << "           " << loafersCount << "                   Loafers            PHP 1799.99            PHP " << loafersCount * 1799.99 << endl;
+        cout << "         " << loafersCount << "                "
+        << loafersSize << "             Loafers         PHP 1799.99      PHP "
+        << loafersCount * 1799.99 << endl;
 
     if (dressShoesCount > 0)
-        cout << "           " << dressShoesCount << "                 Dress Shoes          PHP 1899.99            PHP " << dressShoesCount * 1899.99 << endl;
+        cout << "         " << dressShoesCount << "                "
+        << dressShoesSize << "           Dress Shoes       PHP 1899.99      PHP "
+        << dressShoesCount * 1899.99 << endl;
 
     if (sandalsCount > 0)
-        cout << "           " << sandalsCount << "                  Sandals             PHP 899.99             PHP " << sandalsCount * 899.99 << endl;
+        cout << "         " << sandalsCount << "                "
+        << sandalsSize << "             Sandals          PHP 899.99       PHP "
+        << sandalsCount * 899.99 << endl;
 
     if (leatherBootsCount > 0)
-        cout << "           " << leatherBootsCount << "               Leather Boots          PHP 2999.99            PHP " << leatherBootsCount * 2999.99 << endl;
+        cout << "         " << leatherBootsCount << "                "
+        << leatherBootsSize << "          Leather Boots      PHP 2999.99      PHP "
+        << leatherBootsCount * 2999.99 << endl;
 
     if (ruggedBootsCount > 0)
-        cout << "           " << ruggedBootsCount << "                Rugged Boots          PHP 2399.99            PHP " << ruggedBootsCount * 2399.99 << endl;
+        cout << "         " << ruggedBootsCount << "                "
+        << ruggedBootsSize << "           Rugged Boots       PHP 2399.99      PHP "
+        << ruggedBootsCount * 2399.99 << endl;
 
     if (waterproofBootsCount > 0)
-        cout << "           " << waterproofBootsCount << "              Waterproof Boots        PHP 1299.99            PHP " << waterproofBootsCount * 1299.99 << endl;
+        cout << "         " << waterproofBootsCount << "                "
+        << waterproofBootsSize << "        Waterproof Boots     PHP 1299.99      PHP "
+        << waterproofBootsCount * 1299.99 << endl;
 
     if (slipOnsCount > 0)
-        cout << "           " << slipOnsCount << "                  Slip-ons             PHP 899.99            PHP " << slipOnsCount * 899.99 << endl;
+        cout << "         " << slipOnsCount << "                "
+        << slipOnsSize << "             Slip-ons        PHP 899.99       PHP "
+        << slipOnsCount * 899.99 << endl;
 
     if (platformsCount > 0)
-        cout << "           " << platformsCount << "                  Platforms           PHP 1199.99            PHP " << platformsCount * 1199.99 << endl;
+        cout << "         " << platformsCount << "                "
+        << platformsSize << "             Platforms        PHP 1199.99      PHP "
+        << platformsCount * 1199.99 << endl;
 
     if (heelsCount > 0)
-        cout << "           " << heelsCount << "                   Heels              PHP 1399.99            PHP " << heelsCount * 1399.99 << endl;
+        cout << "         " << heelsCount << "                "
+        << heelsSize << "              Heels          PHP 1399.99      PHP "
+        << heelsCount * 1399.99 << endl;
 
     if (balletFlatsCount > 0)
-        cout << "           " << balletFlatsCount << "                Ballet Flats          PHP 999.99             PHP " << balletFlatsCount * 999.99 << endl;
+        cout << "         " << balletFlatsCount << "                "
+        << balletFlatsSize << "          Ballet Flats       PHP 999.99       PHP "
+        << balletFlatsCount * 999.99 << endl;
 
-    // Accessories
+    // ACCESSORIES — NO SIZE
     if (socksCount > 0)
-        cout << "           " << socksCount << "                   Socks              PHP 199.99             PHP " << socksCount * 199.99 << endl;
+        cout << "         " << socksCount << "                "
+        << "-" << "               Socks          PHP 199.99       PHP "
+        << socksCount * 199.99 << endl;
 
     if (insolesCount > 0)
-        cout << "           " << insolesCount << "                  Insoles             PHP 250.00             PHP " << insolesCount * 250.00 << endl;
+        cout << "         " << insolesCount << "                "
+        << "-" << "              Insoles         PHP 250.00       PHP "
+        << insolesCount * 250.00 << endl;
 
     if (cleanerCount > 0)
-        cout << "           " << cleanerCount << "                Shoe Cleaner          PHP 230.00             PHP " << cleanerCount * 230.00 << endl;
+        cout << "         " << cleanerCount << "                "
+        << "-" << "           Shoe Cleaner       PHP 230.00       PHP "
+        << cleanerCount * 230.00 << endl;
 
     if (polishCount > 0)
-        cout << "           " << polishCount << "                 Shoe Polish          PHP 140.00             PHP " << polishCount * 140.00 << endl;
+        cout << "         " << polishCount << "                "
+        << "-" << "            Shoe Polish       PHP 140.00       PHP "
+        << polishCount * 140.00 << endl;
 
     if (shoelacesCount > 0)
-        cout << "           " << shoelacesCount << "                 Shoelaces            PHP 100.00             PHP " << shoelacesCount * 100.00 << endl;
+        cout << "         " << shoelacesCount << "                "
+        << "-" << "             Shoelaces        PHP 100.00       PHP "
+        << shoelacesCount * 100.00 << endl;
 
     if (brushCount > 0)
-        cout << "           " << brushCount << "                 Shoe Brush            PHP 140.00            PHP " << brushCount * 140.00 << endl;
+        cout << "         " << brushCount << "                "
+        << "-" << "            Shoe Brush        PHP 140.00       PHP "
+        << brushCount * 140.00 << endl;
 
     if (padsCount > 0)
-        cout << "           " << padsCount << "                 Shoe Pads            PHP  90.00             PHP " << padsCount * 90.00 << endl;
+        cout << "         " << padsCount << "                "
+        << "-" << "             Shoe Pads        PHP 90.00        PHP "
+        << padsCount * 90.00 << endl;
 
-    if (hornCount > 0) {
-        cout << "           " << hornCount << "                 Shoe Horn                PHP 70.00          PHP " << hornCount * 70.00 << endl;
-    }
+    if (hornCount > 0)
+        cout << "         " << hornCount << "               "
+        << "-" << "             Shoe Horn        PHP 70.00        PHP "
+        << hornCount * 70.00 << endl;
+
 
     cout << "------------------------------------------------------------------------------------------" << endl;
-    cout << "Subtotal                                                                 PHP " << totalBefore << endl;
+    cout << "Subtotal                                                                  PHP " << totalBefore << endl;
 
     if (senior == 'y' || senior == 'Y' || pwd == 'y' || pwd == 'Y') {
-        cout << "VAT (12%)                                                              + PHP " << vatTotal << endl;
-        cout << "Senior/PWD Discount (20%)                                              - PHP " << seniorTotal << endl;
+        cout << "VAT-Exempt                                                                   " << endl;
+        cout << "Senior/PWD Discount (20%)                                               - PHP " << seniorTotal << endl;
     }
     else {
-        cout << "VAT (12%)                                                              + PHP " << vatTotal << endl;
+        cout << "VAT (12%)                                                               + PHP " << vatTotal << endl;
     }
     cout << "------------------------------------------------------------------------------------------" << endl;
-    cout << "TOTAL                                                                    PHP " << total << endl;
-    cout << "AMOUNT PAID                                                              PHP " << cashAmount << endl;
+    cout << "TOTAL                                                                     PHP " << total << endl;
+    cout << "AMOUNT PAID                                                               PHP " << cashAmount << endl;
     cout << "------------------------------------------------------------------------------------------" << endl;
-    cout << "CHANGE                                                                   PHP " << cashAmount - total << endl;
+    cout << "CHANGE                                                                    PHP " << cashAmount - total << endl;
     cout << "------------------------------------------------------------------------------------------" << endl;
     return 0;
 }
+
+
