@@ -299,8 +299,8 @@ int main() {
         }
     }
 
-    //asks the user whether they are a senior citizen or a pwd, and resets the question if the input is invalid
-    cout << "Are you a senior citizen? (Y / N) : ";
+    //Asks the user whether they are a senior citizen or a pwd, and resets the question if the input is invalid
+    cout << endl << "Are you a senior citizen? (Y / N) : ";
     while (true) {
         cin >> senior;
 
@@ -325,9 +325,9 @@ int main() {
             vatTotal = totalBefore * vat;
             total = totalBefore + vatTotal;
         }
-        break;  // exit loop if inputs are valid and calculations done
+        break;  // Exit loop if inputs are valid and calculations done
     }
-    cout << "Your total is: PHP " << total << endl;
+    cout << endl << "Your total is: PHP " << total << endl;
     while (true) {
 
         cout << "Enter cash amount: PHP ";
